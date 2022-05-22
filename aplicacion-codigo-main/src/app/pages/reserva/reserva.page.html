@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-avatar slot="start">
+        <ion-icon name="paw" slot="icon-only"></ion-icon>
+      </ion-avatar>
+      <ion-title>Veterinaria San juan</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label color="primary">hora de reserva:</ion-label>
+    <ion-datetime cancelText="cancel" doneText="done" displayFormat="HH:mm" hour-values="[8,9,10,11,12,15,16,17,18]" minute-values="[0,30]"></ion-datetime>
+    </ion-item>
+  <ion-item *ngIf="usuario">
+    <ion-input readonly placeholder="Nombre de la reservacion" [value]="nombreCompleto"></ion-input>
+  </ion-item>
+  <ion-button size="block" (click)="GenerarReserva()">
+    Realizar Reserva
+  </ion-button>
+  <ion-list-header>
+    <ion-label>
+      <h2>
+        Reservas agendadas para hoy
+      </h2>
+    </ion-label>
+  </ion-list-header>
+  <ion-item *ngFor="let reserva of reservas">
+    <ion-avatar slot="end">
+      <ion-img src="../../../assets/icon/time-outline.svg "></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h3>Reservado</h3>
+     <p color="primary">{{reserva.hora}} hrs </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>
